@@ -3,8 +3,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_auth/src/features/login/application/services/login_interceptor.dart';
 import 'package:flutter_auth/src/features/login/presentation/states/login_shared_preferences.dart';
-import 'package:flutter_auth/src/profile/data/repositories/profile_repository.dart';
-import 'package:flutter_auth/src/profile/domain/models/profile_model.dart';
+import 'package:flutter_auth/src/features/profile/data/repositories/profile_repository.dart';
+import 'package:flutter_auth/src/features/profile/domain/models/profile_model.dart';
 
 class ProfileService with LoginInterceptor implements ProfileRepository {
   @override

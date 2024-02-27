@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/src/features/login/presentation/states/login_shared_preferences.dart';
-import 'package:flutter_auth/src/profile/application/services/profile_service.dart';
-import 'package:flutter_auth/src/profile/presentation/states/bloc/profile_bloc.dart';
+import 'package:flutter_auth/src/features/profile/application/services/profile_service.dart';
+import 'package:flutter_auth/src/features/profile/presentation/states/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 

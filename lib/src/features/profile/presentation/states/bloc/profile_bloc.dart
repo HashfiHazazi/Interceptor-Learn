@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/src/profile/application/services/profile_service.dart';
-import 'package:flutter_auth/src/profile/domain/models/profile_model.dart';
+import 'package:flutter_auth/src/features/profile/application/services/profile_service.dart';
+import 'package:flutter_auth/src/features/profile/domain/models/profile_model.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

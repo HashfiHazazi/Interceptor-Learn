@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/src/features/bottom_nav/presentation/states/bloc/bottom_nav_bloc.dart';
 import 'package:flutter_auth/src/features/home/presentation/widgets/home_page.dart';
 import 'package:flutter_auth/src/features/schedule/presentation/widgets/schedule_page.dart';
-import 'package:flutter_auth/src/profile/presentation/widgets/profile_page.dart';
+import 'package:flutter_auth/src/features/profile/presentation/widgets/profile_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:google_nav_bar/google_nav_bar.dart';
