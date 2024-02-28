@@ -27,16 +27,12 @@ class LoginService with LoginInterceptor implements LoginRepository {
   Future<void> saveCode(String code) async {
     await LoginSharedPreferences.setCode(code);
   }
-
-  Future<Dio> getInterceptor() async {
-    return await dioInterceptor();
-  }
-
+  
   @override
   Future<bool> dioLogin(
       String codevalue, String usernamevalue, String passwordValue) async {
     try {
-      final _dio = await getInterceptor();
+      final _dio = await dioInterceptor();
       Response response = await _dio.post(
         _loginUrl,
         options: Options(headers: {'code': codevalue}),

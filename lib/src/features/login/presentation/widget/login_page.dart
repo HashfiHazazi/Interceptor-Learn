@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 48),
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
