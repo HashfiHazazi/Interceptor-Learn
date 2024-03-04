@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
       ),
       onGenerateRoute: route.onRoute,
-      initialRoute: RouteNames.bottomNav,
+      initialRoute: RouteNames.login,
       debugShowCheckedModeBanner: false,
     );
   }
