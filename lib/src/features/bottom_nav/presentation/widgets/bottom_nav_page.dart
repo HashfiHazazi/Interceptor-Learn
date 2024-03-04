@@ -37,7 +37,9 @@ class BottomNavPage extends StatelessWidget {
             margin: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(48),
-              color: navColor,
+              gradient: LinearGradient(
+                colors: [Colors.blue,navColor, navColor,Colors.blue],
+              ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(1),
