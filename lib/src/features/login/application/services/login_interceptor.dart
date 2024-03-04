@@ -7,18 +7,19 @@ mixin LoginInterceptor {
   var option = BaseOptions(
     baseUrl: 'http://103.82.242.180:1440/api/v1',
   );
-  Future<Dio> dioInterceptor() async {
+  Future<Dio> loginInterceptor() async {
     Dio dio = Dio(option);
     dio.interceptors.clear();
     dio.interceptors.add(
       PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseBody: true,
-          responseHeader: true,
-          error: true,
-          compact: true,
-          maxWidth: 90),
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: true,
+        error: true,
+        compact: true,
+        maxWidth: 90,
+      ),
     );
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -27,12 +28,12 @@ mixin LoginInterceptor {
           //kalau tidak kosong dapetin code dari Lokal/SharedPreferences
           final code = await LoginSharedPreferences.getCode();
           if (code != null) {
-            request.headers['code'] = code;
+            request.headers["code"] = code;
           }
           //kalau tidak kosong dapetin access token dari Lokal/SharedPreferences
           final accessToken = await LoginSharedPreferences.getToken();
           if (accessToken != null) {
-            request.headers['Authorization'] = 'Bearer $accessToken';
+            request.headers["Authorization"] = "Bearer $accessToken";
           }
           print("LEWAT");
           return handler.next(request);

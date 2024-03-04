@@ -11,14 +11,15 @@ class ProfileService with LoginInterceptor implements ProfileRepository {
   Future<ProfileModel> fetchProfile() async {
     final getUserId = await LoginSharedPreferences.getUserId();
     const String _profileUrl = '/mobile-api/profile';
+    
+    Dio _dio = await loginInterceptor();
 
-    Dio _dio = await dioInterceptor();
     final profileResponse = await _dio.get(
       _profileUrl,
       queryParameters: {"user_id": getUserId, "type": 1},
     );
 
-    final profileResult = profileResponse.data['data'];
+    final profileResult = profileResponse.data["data"];
     print(profileResult);
     ProfileModel profileList = ProfileModel.fromJson(profileResult);
     return profileList;

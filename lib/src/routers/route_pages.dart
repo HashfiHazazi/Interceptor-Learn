@@ -4,14 +4,15 @@ import 'package:flutter_auth/src/features/bottom_nav/presentation/states/bloc/bo
 import 'package:flutter_auth/src/features/bottom_nav/presentation/widgets/bottom_nav_page.dart';
 import 'package:flutter_auth/src/features/login/presentation/widget/login_page.dart';
 import 'package:flutter_auth/src/features/profile/presentation/widgets/profile_page.dart';
+import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RoutePages {
+class RoutePages{
   final myBottomNavBloc = BottomNavBloc();
 
   Route onRoute(RouteSettings routePages) {
     switch (routePages.name) {
-      case '/bottomNav':
+      case RouteNames.bottomNav:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
@@ -20,12 +21,13 @@ class RoutePages {
             child: BottomNavPage(),
           ),
         );
-      case '/login':
+      case RouteNames.login:
         return MaterialPageRoute(builder: (context) => const LoginPage());
-      case '/profile':
+      case RouteNames.profile:
         return MaterialPageRoute(builder: (context) => const ProfilePage());
       default:
         return MaterialPageRoute(builder: (context) => const NotFoundPage());
     }
   }
+
 }

@@ -43,7 +43,7 @@ class BottomNavPage extends StatelessWidget {
                 )
               ],
             ),
-            child: Padding(
+            child: Padding(                                                                             
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: GNav(
                 tabs: navItems,

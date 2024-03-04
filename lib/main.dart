@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:flutter_auth/src/routers/route_pages.dart';
 
 void main() {
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login Auth',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
-          useMaterial3: true,
-          fontFamily: 'Quicksand'),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+        useMaterial3: true,
+        fontFamily: 'Quicksand',
+      ),
       onGenerateRoute: route.onRoute,
-      initialRoute: '/login',
+      initialRoute: RouteNames.bottomNav,
       debugShowCheckedModeBanner: false,
     );
   }

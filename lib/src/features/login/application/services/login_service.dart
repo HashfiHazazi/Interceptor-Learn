@@ -32,7 +32,7 @@ class LoginService with LoginInterceptor implements LoginRepository {
   Future<bool> dioLogin(
       String codevalue, String usernamevalue, String passwordValue) async {
     try {
-      final _dio = await dioInterceptor();
+      final _dio = await loginInterceptor();
       Response response = await _dio.post(
         _loginUrl,
         options: Options(headers: {'code': codevalue}),

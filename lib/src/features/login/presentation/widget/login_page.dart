@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/src/features/login/application/services/login_service.dart';
 import 'package:flutter_auth/src/features/login/presentation/states/login_shared_preferences.dart';
+import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,6 +18,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController codeTextController = TextEditingController();
   TextEditingController usernameTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
+
+  @override
+  void dispose() {
+    codeTextController.dispose();
+    usernameTextController.dispose();
+    passwordTextController.dispose();
+    super.dispose();
+  }
 
   final api = LoginService();
 
@@ -96,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                   future: LoginSharedPreferences.getUserId(),
                   builder: (context, snapshoot) {
                     if (snapshoot.data == null) {
-                      return const Text('Code: Value user_id kosong');
+                      return const Text('User ID: Value user_id kosong');
                     } else {
                       return Text('User ID: ${snapshoot.data}');
                     }
@@ -153,11 +161,9 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true,
                   suffixIcon: IconButton(
                       onPressed: () {
-                        if (isVisibilePassword == true) {
-                          isVisibilePassword = false;
-                        } else {
-                          isVisibilePassword = true;
-                        }
+                        (isVisibilePassword == true)
+                            ? isVisibilePassword = false
+                            : isVisibilePassword = true;
                         setState(() {});
                       },
                       icon: (isVisibilePassword == true)
@@ -184,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                   print('RESULT ON PRESSED: $result');
                   if (context.mounted) {
                     if (result == true) {
-                      Navigator.pushNamed(context, '/bottomNav');
+                      Navigator.pushNamed(context, RouteNames.bottomNav);
                     } else {
                       showDialog(
                         context: context,
@@ -208,8 +214,6 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                       );
-                      // if (context.mounted) {
-                      // }
                     }
                   }
                   setState(() {});

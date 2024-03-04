@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/src/features/login/presentation/states/login_shared_preferences.dart';
 import 'package:flutter_auth/src/features/profile/application/services/profile_service.dart';
 import 'package:flutter_auth/src/features/profile/presentation/states/bloc/profile_bloc.dart';
+import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -15,7 +18,18 @@ class ProfilePage extends StatelessWidget {
     ProfileBloc myProfileBloc = ProfileBloc(profileService: ProfileService())
       ..add(LoadProfile());
     return Scaffold(
+      extendBodyBehindAppBar: false,
       appBar: AppBar(
+        flexibleSpace: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              color: Colors.transparent,
+            ),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white.withAlpha(200),
         centerTitle: true,
         title: GradientText(
           'Profile Page',
@@ -103,7 +117,7 @@ class ProfilePage extends StatelessWidget {
                               ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                         GradientText(
-                          profileData.lastName,
+                          profileData.placeOfBirth,
                           colors: gradientTextColor,
                           style: Theme.of(context).textTheme.headlineSmall,
                         )
@@ -469,7 +483,7 @@ class ProfilePage extends StatelessWidget {
                                 ),
                               ),
                             );
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, RouteNames.login);
                           }
                         },
                         child: const Text(
