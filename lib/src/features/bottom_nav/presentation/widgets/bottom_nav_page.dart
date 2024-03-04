@@ -32,8 +32,11 @@ class BottomNavPage extends StatelessWidget {
     return BlocBuilder<BottomNavBloc, BottomNavState>(
       builder: (context, state) {
         return Scaffold(
+          extendBody: true,
           bottomNavigationBar: Container(
+            margin: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
             decoration: BoxDecoration(
+              borderRadius: BorderRadiusDirectional.circular(48),
               color: navColor,
               boxShadow: [
                 BoxShadow(
@@ -43,23 +46,23 @@ class BottomNavPage extends StatelessWidget {
                 )
               ],
             ),
-            child: Padding(                                                                             
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: GNav(
                 tabs: navItems,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 onTabChange: (index) {
                   myBottomNavBloc.add(
                     TabChange(changeTabEvent: index),
                   );
                 },
-                rippleColor: Colors.blue,
+                rippleColor: Colors.black26,
                 hoverColor: navColor,
                 selectedIndex: state.tabIndex,
-                activeColor: navColor,
-                color: Colors.white,
-                tabBackgroundColor: Colors.white,
+                activeColor: Colors.white,
+                color: Colors.white60,
+                tabBackgroundColor: Colors.blueAccent.withOpacity(0.3),
                 gap: 8,
               ),
             ),

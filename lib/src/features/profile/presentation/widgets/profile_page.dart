@@ -451,8 +451,12 @@ class ProfilePage extends StatelessWidget {
                       height: 14,
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 24),
+                      margin: const EdgeInsets.only(
+                        right: 16,
+                        left: 16,
+                        bottom: 128,
+                        top: 32,
+                      ),
                       width: double.infinity,
                       height: 48,
                       child: ElevatedButton(

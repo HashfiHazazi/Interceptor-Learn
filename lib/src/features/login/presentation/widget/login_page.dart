@@ -119,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: codeTextController,
+                maxLines: 1,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.code),
@@ -137,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: usernameTextController,
+                maxLines: 1,
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.account_circle_outlined),
@@ -155,6 +157,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: passwordTextController,
+                maxLines: 1,
                 obscureText: (isVisibilePassword == true) ? false : true,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock_outline),
