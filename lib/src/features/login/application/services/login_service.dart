@@ -27,13 +27,19 @@ class LoginService with LoginInterceptor implements LoginRepository {
   Future<void> saveCode(String code) async {
     await LoginSharedPreferences.setCode(code);
   }
-  
+
+  @override
+  Future<void> saveRefreshToken(Map<String, dynamic> refreshTokenMap) async {
+    final refreshToken = refreshTokenMap['data']['refresh_token'];
+    await LoginSharedPreferences.setRefreshToken(refreshToken);
+  }
+
   @override
   Future<bool> dioLogin(
       String codevalue, String usernamevalue, String passwordValue) async {
     try {
       final _dio = await loginInterceptor();
-      Response response = await _dio.post( 
+      Response response = await _dio.post(
         _loginUrl,
         options: Options(headers: {'code': codevalue}),
         data: {"username": usernamevalue, "password": passwordValue},
@@ -45,6 +51,7 @@ class LoginService with LoginInterceptor implements LoginRepository {
         await saveUserId(response.data);
         await saveCode(codevalue);
         await saveToken(response.data);
+        await saveRefreshToken(response.data);
         return true;
       } else {
         return false;

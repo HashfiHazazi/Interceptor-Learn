@@ -113,6 +113,34 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(
+              height: 12,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  FutureBuilder(
+                    future: LoginSharedPreferences.getToken(),
+                    builder: (context, snapshoot) {
+                      return Text("Access Token: ${snapshoot.data}");
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  FutureBuilder(
+                    future: LoginSharedPreferences.getRefreshToken(),
+                    builder: (context, snapshoot) {
+                      return Text("Refresh Token: ${snapshoot.data}");
+                    },
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
               height: 32,
             ),
             Container(
@@ -189,7 +217,6 @@ class _LoginPageState extends State<LoginPage> {
 
                   final result = await api.dioLogin(codeTextController.text,
                       usernameTextController.text, passwordTextController.text);
-
                   print('RESULT ON PRESSED: $result');
                   if (context.mounted) {
                     if (result == true) {

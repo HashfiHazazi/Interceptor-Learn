@@ -4,6 +4,7 @@ class LoginSharedPreferences {
   static const String _tokenKey = "TOKEN_KEY";
   static const String _userIdKey = "USER_ID_KEY";
   static const String _codeKey = "CODE_KEY";
+  static const String _refreshTokenKey = "REFRESH_TOKEN_KEY";
 
   static Future<void> setToken(String token) async {
     final preferences = await SharedPreferences.getInstance();
@@ -13,6 +14,16 @@ class LoginSharedPreferences {
   static Future<String?> getToken() async {
     final preferences = await SharedPreferences.getInstance();
     return preferences.getString(_tokenKey);
+  }
+
+  static Future<void> setRefreshToken(String refreshToken) async {
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.setString(_refreshTokenKey, refreshToken);
+  }
+
+  static Future<String?> getRefreshToken() async {
+    final preferences = await SharedPreferences.getInstance();
+    return preferences.getString(_refreshTokenKey);
   }
 
   static Future<void> setUserId(int userId) async {

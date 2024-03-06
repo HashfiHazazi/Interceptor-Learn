@@ -11,6 +11,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class BottomNavPage extends StatelessWidget {
   BottomNavPage({super.key});
 
+  
+
   List<GButton> navItems = <GButton>[
     const GButton(icon: Icons.home_filled, text: 'Home'),
     const GButton(icon: Icons.calendar_month, text: 'Schedule'),
@@ -34,11 +36,15 @@ class BottomNavPage extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           bottomNavigationBar: Container(
-            margin: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
+            margin: const EdgeInsets.only(
+              right: 16,
+              left: 16,
+              bottom: 24,
+            ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(48),
+              borderRadius: BorderRadius.circular(48),
               gradient: LinearGradient(
-                colors: [Colors.blue,navColor, navColor,Colors.blue],
+                colors: [Colors.blue, navColor, navColor, Colors.blue],
               ),
               boxShadow: [
                 BoxShadow(
@@ -75,3 +81,4 @@ class BottomNavPage extends StatelessWidget {
     );
   }
 }
+ 
