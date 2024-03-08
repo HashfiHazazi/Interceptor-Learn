@@ -4,6 +4,7 @@ import 'package:flutter_auth/src/features/login/application/services/login_servi
 import 'package:flutter_auth/src/features/login/presentation/states/login_shared_preferences.dart';
 import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:lottie/lottie.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,24 +47,14 @@ class _LoginPageState extends State<LoginPage> {
                   await LoginSharedPreferences.clear();
                   // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      duration: Duration(seconds: 1),
-                      backgroundColor: Colors.green,
-                      content: Row(
-                        children: [
-                          Icon(
-                            Icons.check_circle_outline,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            'Access Token, User_id, Code has deleted',
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      ),
+                    SnackBar(
+                      duration: const Duration(seconds: 1),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      content: AwesomeSnackbarContent(
+                          title: 'Success!',
+                          message: "All value in local storage has deleted.",
+                          contentType: ContentType.success),
                     ),
                   );
                   setState(() {});
