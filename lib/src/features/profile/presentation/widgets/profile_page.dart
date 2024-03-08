@@ -8,6 +8,7 @@ import 'package:flutter_auth/src/features/profile/presentation/states/bloc/profi
 import 'package:flutter_auth/src/routers/route_names.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -467,24 +468,15 @@ class ProfilePage extends StatelessWidget {
                           await LoginSharedPreferences.clear();
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                duration: Duration(seconds: 3),
-                                backgroundColor: Colors.green,
-                                content: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.check_circle_outline,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Text(
-                                      'Access Token, User_id, Code has deleted',
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
+                              SnackBar(
+                                duration: const Duration(seconds: 3),
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+                                content: AwesomeSnackbarContent(
+                                    title: 'Success!',
+                                    message:
+                                        "All value in local storage has deleted.",
+                                    contentType: ContentType.success),
                               ),
                             );
                             Navigator.pushNamed(context, RouteNames.login);
